@@ -1,0 +1,152 @@
+@import 'reset';
+
+.dash-container {
+    background: var(--sidebar-color);
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 6px;
+
+    .table {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            .title-content {
+                display: flex;
+                align-items: center;
+
+                .icon {
+                    font-size: 30px;
+                    color: var(--primary-color);
+                }
+
+                .text {
+                    color: var(--text-color);
+                    font-size: 20px;
+                    font-weight: 500px;
+                    margin: 0 10px;
+                    padding: 0;
+                }
+
+                &:last-child {
+                    border-radius: 6px;
+                    transition: var(--tran-04);
+
+                    a {
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+
+                        .text{
+                            color: var(--text-color);
+                            font-size: 18px;
+                            transition: var(--tran-04);
+                        }
+
+                        .icon {
+                            color: var(--text-color);
+                            font-size: 22px;
+                            transition: var(--tran-04);
+                        }
+                    }
+
+                    &:hover {
+                        background: var(--primary-color);
+
+                        .text, .icon {
+                            color: var(--sidebar-color);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .table-data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .data {
+                display: flex;
+                flex-direction: column;
+                margin: 0 15px;
+
+                .data-title {
+                    color: var(--text-color);
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 0;
+                }
+
+                .data-list {
+                    font-size: 14px;
+                    margin-top: 15px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 25ch;
+                    color: var(--text-color);
+                    padding: 0;
+                }
+
+                .data-list.options {
+                    display: flex;
+                    align-items: center;
+
+                    .actions {
+                        margin-right: 10px;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+
+                        .delete, .edit {
+                            text-decoration: none;
+                            cursor: pointer;
+
+                            .icon {
+                                font-size: 20px;
+                                vertical-align: middle;
+                                padding: 0 2px;
+                                border-radius: 6px;
+                                transition: var(--tran-04);
+                            }
+                        }
+
+                        .delete button {
+                            background: none;
+                            border: none;
+                            outline: none;
+                        }
+
+                        .delete .icon {
+                            color: var(--text-color);
+                        }
+
+                        .edit .icon {
+                            background: var(--primary-color-light);
+                            color: var(--text-color);
+                        }
+
+                        .delete:hover .icon {
+                            color: red;
+                        }
+
+                        .edit:hover .icon {
+                            background: var(--primary-color);
+                            color: var(--primary-color-light);
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,282 @@
+@import 'reset';
+
+body {
+    height: 100%;
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+/********* Dark mode *********/
+body.dark {
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/************** Setting base ***************/
+.admin-sidebar{
+
+    .text {
+        color: var(--text-color);
+        font-size: 16px;
+        font-weight: 500;
+        transition: var(--tran-03);
+        white-space: nowrap;
+        opacity: 1;
+    }
+
+    .image {
+        min-width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/********* Sidebar *********/
+.admin-sidebar {
+    background: var(--sidebar-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    transition: var(--tran-02);
+    z-index: 10;
+
+    ul {
+        padding: 0;
+    }
+
+    header {
+        position: relative;
+
+        .image-text{
+            display: flex;
+            align-items: center;
+
+            .icon {
+                color: var(--primary-color);
+                font-size: 40px;
+                border-radius: 6px;
+            }
+
+            .header-text {
+                display: flex;
+                flex-direction: column;
+
+                .name {
+                    font-weight: 600;
+                }
+
+                .profession {
+                    margin-top: -2px;
+                }
+            }
+        }
+
+        .toggle {
+            background: var(--primary-color);
+            color: var(--sidebar-color);
+            position: absolute;
+            top: 50%;
+            right: -25px;
+            width: 25px;
+            height: 25px;
+            padding: 5px;
+            transform: translateY(-50%) rotate(180deg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--tran-03);
+            cursor: pointer;
+        }
+    }
+
+    .search-box {
+        background: var(--primary-color-light);
+        border-radius: 6px;
+        transition: var(--tran-05);
+
+        input {
+            background: var(--primary-color-light);
+            color: var(--text-color);
+            font-size: 16px;
+            font-weight: 500;
+            height: 100%;
+            width: 100%;
+            border-radius: 6px;
+            outline: none;
+            border: none;
+            transition: var(--tran-05);
+        }
+    }
+
+    li {
+        height: 50px;
+        margin-top: 10px;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            min-width: 60px;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon, .text {
+            color: var(--text-color);
+            transition: var(--tran-02);
+        }
+
+        a {
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            transition: var(--tran-04);
+            cursor: pointer;
+
+            &:hover {
+                background: var(--primary-color);
+
+                .icon, .text {
+                    color: var(--sidebar-color);
+                }
+            }
+        }
+    }
+
+    .menu-bar {
+        height: calc(100% - 75px);
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .mode {
+            background: var(--primary-color-light);
+            border-radius: 6px;
+            position: relative;
+
+            .theme-mode {
+                height: 50px;
+                width: 60px;
+                display: flex;
+                align-items: center;
+
+            }
+
+            i {
+                position: absolute;
+                transition: var(--tran-03);
+
+                &.sun {
+                    opacity: 0;
+                }
+            }
+
+            .toggle-switch {
+                background: var(--primary-color-light);
+                min-width: 60px;
+                height: 100%;
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                right: 0;
+                transition: var(--tran-05);
+                cursor: pointer;
+
+                .switch {
+                    position: relative;
+                    height: 22px;
+                    width: 44px;
+                    border-radius: 25px;
+                    background: var(--toggle-color);
+
+                    &::before {
+                        content: '';
+                        background: var(--sidebar-color);
+                        height: 15px;
+                        width: 15px;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 50%;
+                        left: 5px;
+                        transform: translateY(-50%);
+                        transition: var(--tran-03);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/********* Sidebar Close *********/
+.admin-sidebar.close {
+    width: 88px;
+
+    .text {
+        opacity: 0;
+    }
+
+    header .toggle {
+        transform: translateY(-50%);
+    }
+
+    .search-box {
+        cursor: pointer;
+    }
+}
+
+/********* Sidebar Dark Mode settings *********/
+body.dark {
+
+    .admin-sidebar {
+
+        header {
+
+            .image-text .icon {
+                color: var(--text-color);
+            }
+
+            .toggle {
+                color: var(--text-color);
+            }
+        }
+
+        li a:hover .icon,
+        li a:hover .text {
+            color: var(--text-color)
+        }
+
+        .menu-bar .mode {
+
+            i.moon {
+                opacity: 0;
+            }
+
+            i.sun {
+                opacity: 1;
+            }
+
+            .toggle-switch .switch::before {
+                left: 24px;
+            }
+        }
+    }
+
+}
