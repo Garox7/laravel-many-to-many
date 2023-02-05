@@ -57,7 +57,7 @@
             </div>
 
             {{-- TAGS --}}
-            {{-- <div class="mb-3">
+            <div class="mb-3">
                 <h6>Tags</h6>
                 <div class="d-flex">
                     @foreach($tags as $tag)
@@ -72,8 +72,8 @@
                             >
                             <label class="form-check-label" for="tag-{{ $tag->id }}">
                                 {{ $tag->name }}
-                            </label> --}}
-                            {{-- <div class="invalid-feedback">
+                            </label>
+                            <div class="invalid-feedback">
                                 @error("tags.$loop->index")
                                     <ul>
                                         @foreach ($errors->get("tags.$loop->index") as $error)
@@ -81,8 +81,8 @@
                                         @endforeach
                                     </ul>
                                 @enderror
-                            </div> --}}
-                        {{-- </div>
+                            </div>
+                        </div>
                     @endforeach
                     @if ($errors->has('tags') || $errors->has('tags.*'))
                         <div>
@@ -90,7 +90,7 @@
                         </div>
                     @endif
                 </div>
-            </div> --}}
+            </div>
 
             {{-- FILE IMAGE --}}
             <div class="mb-3">

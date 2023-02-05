@@ -73,6 +73,12 @@
                                 <span class="text nav-text">Categorie</span>
                             </a>
                         </li>
+                        <li class="my-nav-link">
+                            <a href="{{ route('admin.tags.index') }}">
+                                <i class='bx bx-purchase-tag-alt icon'></i>
+                                <span class="text nav-text">Tags</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 

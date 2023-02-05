@@ -72,5 +72,8 @@
             </div>
         </div>
     </div>
+    <div class="mx-auto pt-2" >
+        {{ $posts->links() }}
+    </div>
 </div>
 @endsection
