@@ -2,12 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class TagController extends Controller
 {
+    private $checkValidation = [
+        'slug' => [
+            'required',
+            'string',
+            'max:100',
+        ],
+        'slug' => [
+            'required',
+            'string',
+            'max:100',
+        ],
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +40,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
     }
 
     /**
@@ -37,7 +51,22 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validazione
+        $this->checkValidation['slug'][] = 'unique:tags';
+        $this->checkValidation['name'][] = 'unique:tags';
+        $request->validate($this->checkValidation);
+        $data = $request->all();
+
+        // salvataggio dati
+        $tag = new Tag();
+        $tag->name = $data['name'];
+        $tag->slug = $data['slug'];
+        $tag->save();
+
+        // redirezionamento
+        return redirect()
+            ->route('admin.tags.show', ['tag' => $tag])
+            ->with('success_created', $tag);
     }
 
     /**
@@ -59,7 +88,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit', ['tag' => $tag]);
     }
 
     /**
@@ -71,7 +100,21 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        // validazione
+        $this->checkValidation['slug'][] = Rule::unique('tags')->ignore($tag);
+        $this->checkValidation['name'][] = Rule::unique('tags')->ignore($tag);
+        $request->validate($this->checkValidation);
+        $data = $request->all();
+
+        // salvataggio dati
+        $tag->name = $data['name'];
+        $tag->slug = $data['slug'];
+        $tag->update();
+
+        // redirezionamento
+        return redirect()
+            ->route('admin.tags.show', ['tag' => $tag])
+            ->with('success_updated', $tag);
     }
 
     /**

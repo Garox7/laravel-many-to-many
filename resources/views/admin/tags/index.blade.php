@@ -22,14 +22,7 @@
                 @foreach ($tags as $tag)
                     <div class="data-list options">
                         <span class="actions">
-
-                            <form action="#" method="post" class="delete">
-                                @csrf
-                                @method('DELETE')
-                                <button class="material-symbols-outlined icon">delete</button>
-                            </form>
-
-                            <a href="#" class="edit">
+                            <a href="{{ route('admin.tags.edit', ['tag' => $tag]) }}" class="edit">
                                 <span class="material-symbols-outlined icon">more_vert</span>
                             </a>
                         </span>

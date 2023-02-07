@@ -2,6 +2,21 @@
 
 @section('content')
     <div class="container">
+        @if(session('success_created'))
+            <div class="container py-4">
+                <div class="alert alert-success">
+                    Il tag "{{ session('success_created')->name }}" è stato creato.
+                </div>
+            </div>
+        @elseif (session('success_updated'))
+            <div class="container py-4">
+                <div class="alert alert-warning">
+                    Il tag "{{ session('success_updated')->name }}" è stato modificato.
+                </div>
+            </div>
+        @endif
+    </div>
+    <div class="container">
         <h1 class="mb-4">#{{ $tag->name }}</h1>
         <h4>I post che contengono #{{ $tag->name }} </h4>
         <div class="row g-3">
