@@ -47,22 +47,18 @@
                     <span class="data-list">{{ $tag->slug }}</span>
                 @endforeach
             </div>
-            {{-- <div class="data category">
-                <span class="data-title">Post Associati</span>
-                @if($tag->posts)
-                    @foreach ($tag->posts as $post)
-                        <a href="#" class="data-list">
-                            {{ $post->title }}
-                        </a>
+            <div class="data category">
+                <span class="data-title">Creato</span>
+                    @foreach ($tags as $tag)
+                        <span class="data-list">{{ $tag->created_at }}</span>
                     @endforeach
-                @endif
-            </div> --}}
-            {{-- <div class="data joined">
-                <span class="data-title">Joined</span>
-                @foreach ($posts as $post)
-                    <span class="data-list">{{ $post->created_at }}</span>
+            </div>
+            <div class="data joined">
+                <span class="data-title">Aggiornato</span>
+                @foreach ($tags as $tag)
+                    <span class="data-list">{{ $tag->updated_at }}</span>
                 @endforeach
-            </div> --}}
+            </div>
         </div>
     </div>
     {{-- <div class="mx-auto pt-2" >
