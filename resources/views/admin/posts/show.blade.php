@@ -5,8 +5,8 @@
         <h1>{{ $post->title }}</h1>
         <h5>Nella categoria: {{ $post->category->name }}</h5>
         <div class="pb-4">
-            <span>Tags: </span>
             @if ($post->tags->all())
+                <span>Tags: </span>
                 @foreach ($post->tags as $tag)
                     <a href="{{ route('admin.tags.show', ['tag' => $tag]) }}">
                         {{ $tag->name }}

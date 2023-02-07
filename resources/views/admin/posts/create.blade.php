@@ -58,29 +58,20 @@
             {{-- TAGS --}}
             <div class="mb-3">
                 <h6>Tags</h6>
-                <div class="d-flex">
+                <div class="d-flex flex-wrap">
                     @foreach($tags as $tag)
                         <div class="form-check mx-1">
                             <input
-                                class="form-check-input @error("tags.$loop->index") is-invalid @enderror"
+                                id="tag-{{ $tag->id }}"
+                                class="form-check-input"
                                 type="checkbox"
                                 value="{{ $tag->id }}"
-                                id="tag-{{ $tag->id }}"
                                 name="tags[]"
                                 @if (in_array($tag->id, old('tags', []))) checked @endif
                             >
                             <label class="form-check-label" for="tag-{{ $tag->id }}">
                                 {{ $tag->name }}
                             </label>
-                            <div class="invalid-feedback">
-                                @error("tags.$loop->index")
-                                    <ul>
-                                        @foreach ($errors->get("tags.$loop->index") as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                @enderror
-                            </div>
                         </div>
                     @endforeach
                     @if ($errors->has('tags') || $errors->has('tags.*'))
